@@ -46,7 +46,7 @@ public class WebConfig {
         FilterRegistrationBean casValidateFilterBean = new FilterRegistrationBean();
         casValidateFilterBean.setName("CAS Validation Filter");
         casValidateFilterBean.setFilter(new Cas20ProxyReceivingTicketValidationFilter());
-        casValidateFilterBean.setOrder(1);
+        casValidateFilterBean.setOrder(2);
         Map<String, String> casValidateInitParams = new HashMap<String, String>();
         casValidateInitParams.put("casServerUrlPrefix","https://sso.buaa.edu.cn");
         casValidateInitParams.put("useSession","true");
