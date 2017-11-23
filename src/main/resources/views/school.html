@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>学校终端</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<link rel="stylesheet" href="css/shcool.css" />
+	</head>
+	<body>
+		<header class="container">
+			<h2 class="logo">
+				<img src="img/logo.jpg" height="40px" style="border-radius: 20px;" />
+				北京航空航天大学
+			</h2>
+			<div class="time" style="">
+				<div id="t" class="h2" style="float: left">
+					
+				</div>
+				<div style="float: right;margin-left: 10px;">
+					<div id="y" style="margin-top: 15px"></div>
+					<div id="x"></div>
+				</div>
+				
+			</div>
+			
+		</header>
+		<div class="float"></div>
+		<nav class="container">
+			<h1>取号业务数:今天还剩余个号</h1>
+			<div>
+				<div class="h3" style="float: left;">
+					<span class="glyphicon glyphicon-modal-window"></span>
+					当前服务窗口数
+				</div>
+				<div class="h3" style="float: right;">
+					<span class="glyphicon glyphicon-align-justify"></span>
+					总取号业务数
+				</div>
+			</div>
+			<div class="float"></div>
+			<div>
+				<p class="h3" style="float: left;">12个</p>
+				<p class="h3" style="float: right;">6个</p>
+			</div>
+		</nav>
+		<section class="container h2 section">
+			<div class="text-center h2 user" style="background-color: #1EB7F3;">
+				<span class="glyphicon glyphicon-floppy-save"></span>
+				<a href="#">在职证明</a>
+			</div>
+			<div class="text-center h2 user" style="background-color: #00D2AD;">
+				<span class="glyphicon glyphicon-folder-open"></span>
+				<a href="income.html">收入证明</a>
+			</div>
+			<div class="text-center h2 user" style="background-color: #549BF5;">
+				<span class="glyphicon glyphicon-user"></span>
+				<a href="#">职称证明</a>
+			</div>
+			<div class="text-center h2 user" style="background-color: #FCD935;margin-bottom: 40px;">
+				<span class="glyphicon glyphicon-list-alt"></span>
+				<a href="visa.html">出国旅游证明</a>
+			</div>
+		</section>
+		<footer class="text-center h3">北京航空航天大学</footer>
+		<script>
+			new function(){
+				var time=new Date();
+				var y=time.getFullYear();
+				var M=time.getMonth()+1;
+				var h=time.getHours();
+				var m=time.getMinutes();
+				
+				document.getElementById("t").innerHTML=h+":"+m;
+				document.getElementById("y").innerHTML=y+":"+M;
+				
+				var week;
+				switch (time.getDay()){
+				case 1: week="星期一"; break;
+				case 2: week="星期二"; break;
+				case 3: week="星期三"; break;
+				case 4: week="星期四"; break;
+				case 5: week="星期五"; break;
+				case 6: week="星期六"; break;
+				default: week="星期天";
+ 				}
+				document.getElementById("x").innerHTML=week;
+				
+			}
+			     
+			
+		</script>
+	</body>
+</html>

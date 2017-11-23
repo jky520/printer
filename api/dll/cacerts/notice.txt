@@ -1,0 +1,7 @@
+1.新版统一认证的域名是：https://sso.buaa.edu.cn；
+2.接入的应用所在服务器需要做时钟同步，服务端使用了学校的时钟服务和复旦大学的时钟同步，分别为：202.112.128.33 ntp.fudan.edu.cn；
+3.新版统一认证的登录ID为别名，不能直接用于身份标识，必须获取扩展属性，可选扩展属性包括：学工号字段：employeeNumber；姓名字段：displayName等，参考集成文档和“参考配置”文件夹内的内容；
+4.新版统一认证开启了接入管理功能，进行接入或测试时需要把服务器的域名告诉管理员，在服务端添加后才能实现跳转。
+5.注销链接：https://sso.buaa.edu.cn/logout
+6.cacerts放在JAVA_HOME/jre/lib/security下替换原有文件
+7.测试账号：ssotest，密码：tongyirenzheng，工号：123456789，姓名：测试

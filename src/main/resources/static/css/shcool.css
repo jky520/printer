@@ -1,0 +1,39 @@
+body{
+	color: white;
+	background: url(../img/background.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover; 
+	-moz-background-size: cover; 
+	-o-background-size: cover; 
+	background-size: cover; 
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+h1,h2,div,a{
+	color: white;
+}
+.logo{
+	float: left;	
+}
+.time{
+	float: right;
+	padding-top: -10px;
+}
+.float{
+	clear: both;
+}
+.section{
+	 background-color: white;
+	 border: 1px solid;
+	 border-radius: 20px;
+}
+.user{
+	margin-top: 40px;
+	border-radius: 20px;
+	height: 90px;line-height: 90px;
+}
+a{
+	text-decoration: none;
+}
+.h4{
+	margin-top: 35px;
+}
