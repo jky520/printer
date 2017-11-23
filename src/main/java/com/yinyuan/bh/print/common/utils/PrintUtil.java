@@ -1,4 +1,4 @@
-package com.yinyuan.bh.print.utils;
+package com.yinyuan.bh.print.common.utils;
 
 import com.jacob.activeX.ActiveXComponent;
 import com.jacob.com.ComThread;

@@ -1,4 +1,4 @@
-package com.yinyuan.bh.print.utils;
+package com.yinyuan.bh.print.common.utils;
 
 import com.yinyuan.bh.print.word.Word;
 import org.apache.poi.POIXMLDocument;
@@ -90,9 +90,9 @@ public class WordUtil {
             closeStream(fopts);
         }
         String newFileName1 = generateWord(newFileName, params);
-        PrintUtil.print(newFileName1); // 在这里调用打印工具类
-        deleteFile(newFileName1);
-        deleteFile(newFileName);
+//        PrintUtil.print(newFileName1); // 在这里调用打印工具类
+//        deleteFile(newFileName1);
+//        deleteFile(newFileName);
     }
 
     /**
@@ -204,7 +204,7 @@ public class WordUtil {
      * 删除文档
      * @param fileName
      */
-    private static void deleteFile(String fileName) {
+    public static void deleteFile(String fileName) {
         File f = new File(WORD_BASE_URL + File.separator + fileName);
         synchronized (f) { // 同步代码块
             try {
