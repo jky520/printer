@@ -21,8 +21,10 @@ import java.util.Set;
 @Configuration
 public class WebConfig {
 
+    @Value("${appUri}")
+    private String appUri; // 本应用所部署的服务器地址
     @Value("${server.port}")
-    private String serverPort;
+    private String serverPort; // 本应用所启动的端口
 
     @Bean
     public FilterRegistrationBean authenticationFilterBean() {
@@ -33,7 +35,7 @@ public class WebConfig {
         Map<String, String> casInitParams = new HashMap<String, String>();
         casInitParams.put("casServerLoginUrl","https://sso.buaa.edu.cn/login");
         // client:port就是需要cas需要拦截的地址和端口,一般就是这个tomcat所启动的ip和port
-        casInitParams.put("serverName","http://127.0.0.1:"+serverPort);
+        casInitParams.put("serverName", appUri + ":" + serverPort);
         casFilterBean.setInitParameters(casInitParams);
         Set<String> set = new HashSet<String>();
         set.add("/*");
@@ -50,7 +52,7 @@ public class WebConfig {
         Map<String, String> casValidateInitParams = new HashMap<String, String>();
         casValidateInitParams.put("casServerUrlPrefix","https://sso.buaa.edu.cn");
         casValidateInitParams.put("useSession","true");
-        casValidateInitParams.put("serverName","http://127.0.0.1:"+serverPort);
+        casValidateInitParams.put("serverName",appUri + ":" + serverPort);
         casValidateInitParams.put("redirectAfterValidation","true");
         casValidateInitParams.put("tolerance","50000");
         casValidateFilterBean.setInitParameters(casValidateInitParams);

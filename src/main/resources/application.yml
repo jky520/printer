@@ -1,3 +1,5 @@
+# 鏈簲鐢ㄩ儴缃茬殑IP
+appUri: http://10.254.20.145
 # Tomcat
 server:
     tomcat:
@@ -9,10 +11,10 @@ server:
       timeout: 30
     #context-path: /yiyuan
 spring:
-    # jackson时间格式化
+    # jackson鏃堕棿鏍煎紡璁剧疆
     jackson:
         time-zone: GMT+8
         date-format: yyyy-MM-dd HH:mm:ss
-    # 指定静态资源的路径
+    # 闈欐�侀〉闈㈢殑璁剧疆
     resources:
         static-locations: classpath:/static/,classpath:/views/

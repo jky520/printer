@@ -1,6 +1,7 @@
 package com.yinyuan.bh.print.common.config;
 
 import org.jasig.cas.client.util.HttpServletRequestWrapperFilter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
@@ -24,13 +25,18 @@ import java.util.Map;
 //@ComponentScan
 //@EnableAutoConfiguration
 public class WebAppRootContext implements ServletContextInitializer {
+    @Value("${appUri}")
+    private String appUri; // 本应用所部署的服务器地址
+    @Value("${server.port}")
+    private String serverPort; // 本应用所启动的端口
+
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         FilterRegistration.Dynamic casFilter = servletContext.addFilter("CAS Authentication Filter","org.jasig.cas.client.authentication.AuthenticationFilter");
         Map<String, String> casInitParams = new HashMap<String, String>();
         casInitParams.put("casServerLoginUrl","https://sso.buaa.edu.cn/login");
         // client:port就是需要cas需要拦截的地址和端口,一般就是这个tomcat所启动的ip和port
-        casInitParams.put("serverName","127.0.0.1:8080");
+        casInitParams.put("serverName",appUri + ":" + serverPort);
         casFilter.setInitParameters(casInitParams);
         casFilter.addMappingForUrlPatterns(
                 EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE), false, "/*");
@@ -40,7 +46,7 @@ public class WebAppRootContext implements ServletContextInitializer {
         Map<String, String> casValidateInitParams = new HashMap<String, String>();
         casValidateInitParams.put("casServerUrlPrefix","https://sso.buaa.edu.cn");
         casValidateInitParams.put("useSession","true");
-        casValidateInitParams.put("serverName","127.0.0.1:8080");
+        casValidateInitParams.put("serverName",appUri + ":" + serverPort);
         casValidateInitParams.put("redirectAfterValidation","true");
         casValidateInitParams.put("tolerance","50000");
         casValidateFilter.setInitParameters(casValidateInitParams);
