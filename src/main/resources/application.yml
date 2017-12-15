@@ -1,5 +1,5 @@
 # 本应用部署的IP
-appUri: http://10.254.20.145
+appUri: 10.254.20.221
 # Tomcat
 server:
     tomcat:
@@ -9,7 +9,7 @@ server:
     port: 8080
     session:
       timeout: 30
-    #context-path: /yiyuan
+    context-path: /login
 spring:
     # jackson时间格式设置
     jackson:
