@@ -9,7 +9,7 @@ server:
     port: 8080
     session:
       timeout: 30
-    context-path: /login
+#    context-path: /login
 spring:
     # jackson时间格式设置
     jackson:
