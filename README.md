@@ -38,6 +38,12 @@
 # spring boot jar
     可以使用以下命令编译：
     mvn clean package
-    可以追加参数 -Dmaven.test.skip=true 跳过测试。 
+    可以追加参数 -Dmaven.test.skip=true 跳过测试。
+     
+# linux下部署与win下打jar
+    mvn clean package
+    nohup java -jar printer.jar >temp.txt &
+    nohup java -jar printer-0.0.1-SNAPSHOT.jar --server.port=8888 > temp.txt
+    nohup java -jar printer-0.0.1-SNAPSHOT.jar —Dserver.port=8090 > temp.txt
     
     
