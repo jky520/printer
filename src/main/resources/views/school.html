@@ -8,63 +8,84 @@
 		<script type="text/javascript" src="js/jquery.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<link rel="stylesheet" href="css/shcool.css" />
+		<script type="text/javascript">
+            $(function () {
+                $("#abord").on("click", function () {
+                    $.ajax({
+                        type: 'get',
+                        url: "/getAbord",
+                        dataType: 'json',
+                        success: function (data) {
+                            console.log(data)
+                        },
+                        error: function (data) {
+                            alert("错误")
+                        }
+                    });
+                });
+
+                $("#loginout").on("click", function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "https://sso.buaa.edu.cn/logout",
+                        dataType: "jsonp",
+                        jsonp: "callback",
+                        success: function (result, status) {
+                            if(status == 200) {
+                                window.location.href="/";
+                            }
+                        },
+                        error: function (result, status) {
+                            //处理错误
+                        }
+                    });
+                })
+            })
+		</script>
 	</head>
 	<body>
-		<header class="container">
-			<h2 class="logo">
-				<img src="img/logo.jpg" height="40px" style="border-radius: 20px;" />
+		<header class="head">
+			
+			<p class="logo">
+				<img src="img/logo.png" height="60px" style="border-radius: 30px;" />
 				北京航空航天大学
-			</h2>
-			<div class="time" style="">
+			</p>
+			<div class="time">
 				<div id="t" class="h2" style="float: left">
 					
 				</div>
 				<div style="float: right;margin-left: 10px;">
 					<div id="y" style="margin-top: 15px"></div>
 					<div id="x"></div>
-				</div>
-				
+				</div>				
 			</div>
-			
+			<div class="img">
+				<img src="img/beihang.jpg" width="100%" />
+			</div>
 		</header>
 		<div class="float"></div>
-		<nav class="container">
-			<h1>取号业务数:今天还剩余个号</h1>
-			<div>
-				<div class="h3" style="float: left;">
-					<span class="glyphicon glyphicon-modal-window"></span>
-					当前服务窗口数
-				</div>
-				<div class="h3" style="float: right;">
-					<span class="glyphicon glyphicon-align-justify"></span>
-					总取号业务数
-				</div>
-			</div>
-			<div class="float"></div>
-			<div>
-				<p class="h3" style="float: left;">12个</p>
-				<p class="h3" style="float: right;">6个</p>
-			</div>
-		</nav>
-		<section class="container h2 section">
+		<section class="h2 section" style="margin: 20px 50px">
 			<div class="text-center h2 user" style="background-color: #1EB7F3;">
 				<span class="glyphicon glyphicon-floppy-save"></span>
-				<a href="#">在职证明</a>
+				在职证明
 			</div>
-			<div class="text-center h2 user" style="background-color: #00D2AD;">
+			<div class="text-center user" style="background-color: #00D2AD;">
 				<span class="glyphicon glyphicon-folder-open"></span>
-				<a href="income.html">收入证明</a>
+				收入证明
 			</div>
-			<div class="text-center h2 user" style="background-color: #549BF5;">
+			<div class="text-center user" style="background-color: #549BF5;">
 				<span class="glyphicon glyphicon-user"></span>
-				<a href="#">职称证明</a>
+				职称证明
 			</div>
-			<div class="text-center h2 user" style="background-color: #FCD935;margin-bottom: 40px;">
+			<div id = "abord" class="text-center user" style="background-color: #FCD935;">
 				<span class="glyphicon glyphicon-list-alt"></span>
-				<a href="visa.html">出国旅游证明</a>
+				出国旅游证明
+			</div>
+			<div id="loginout" class="text-center user">
+				<button type="button" class="btn btn-danger" style="font-size: 50px;line-height: 1px;">退出</button>
 			</div>
 		</section>
-		<footer class="text-center h3">北京航空航天大学</footer>
+		<footer class="text-center h4">版权所有   2017  北京航空航天大学</footer>
 		<script>
 			new function(){
 				var time=new Date();
@@ -72,10 +93,14 @@
 				var M=time.getMonth()+1;
 				var h=time.getHours();
 				var m=time.getMinutes();
-				
+				if (h<10) {
+					h="0"+h;
+				}
+				if(m<10){
+					m="0"+m;
+				}
 				document.getElementById("t").innerHTML=h+":"+m;
 				document.getElementById("y").innerHTML=y+":"+M;
-				
 				var week;
 				switch (time.getDay()){
 				case 1: week="星期一"; break;

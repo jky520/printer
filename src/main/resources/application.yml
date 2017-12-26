@@ -1,5 +1,9 @@
 # 本应用部署的IP
 appUri: 10.254.20.221
+
+# webServiceUrl
+webServiceUrl: http://10.254.20.145/services/bhdxService?wsdl
+
 # Tomcat
 server:
     tomcat:
@@ -18,3 +22,6 @@ spring:
     # 静态页面的设置
     resources:
         static-locations: classpath:/static/,classpath:/views/
+    http:
+      encoding:
+        charset: GBK

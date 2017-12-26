@@ -1,5 +1,6 @@
 package com.yinyuan.bh.print.common.config;
 
+import com.yinyuan.bh.print.common.filter.AuthenticationFilterWithExcludeUrl;
 import org.jasig.cas.client.authentication.AuthenticationFilter;
 import org.jasig.cas.client.util.HttpServletRequestWrapperFilter;
 import org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter;
@@ -30,12 +31,14 @@ public class WebConfig {
     public FilterRegistrationBean authenticationFilterBean() {
         FilterRegistrationBean casFilterBean = new FilterRegistrationBean();
         casFilterBean.setName("CAS Authentication Filter");
-        casFilterBean.setFilter(new AuthenticationFilter());
+//        casFilterBean.setFilter(new AuthenticationFilter());
+        casFilterBean.setFilter(new AuthenticationFilterWithExcludeUrl());
         casFilterBean.setOrder(1);
         Map<String, String> casInitParams = new HashMap<String, String>();
         casInitParams.put("casServerLoginUrl","https://sso.buaa.edu.cn/login");
         // client:port就是需要cas需要拦截的地址和端口,一般就是这个tomcat所启动的ip和port
         casInitParams.put("serverName", appUri + ":" + serverPort);
+        casInitParams.put("excludePaths","/services/*");
         casFilterBean.setInitParameters(casInitParams);
         Set<String> set = new HashSet<String>();
         set.add("/*");
